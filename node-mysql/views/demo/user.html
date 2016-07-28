@@ -1,0 +1,60 @@
+
+{% extends '../layout.html' %}
+
+{% block head %}
+
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="/stylesheets/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="/stylesheets/font-awesome.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+<form class="container">
+
+    <h1>{{ title }}</h1>
+    <p>
+        <button id="button_add" class="ui-button-success">添加用户</button>
+        <!-- ui-dialog -->
+        <div id="dialog_user" title="用户信息">
+            <form action="">
+            <input type="hidden" name="id" value="0" />
+            <p>First Name:</p>
+            <p><input type="text" name="firstname" text="" /></p>
+            <p>Last Name:</p>
+            <p><input type="text" name="lastname" text="" /></p>
+            <p>Message:</p>
+            <p><input type="text" name="message" text="" /></p>
+            </form>
+        </div>
+    </p>
+    <table id="tab_show" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Message</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        {% if (Users.length > 0) %}
+        <tbody>
+        {% for user in Users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.message }}</td>
+            <td><button name="button_edit" class="ui-button-success" value="{{ user.id }}">编辑</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        {% endif %}
+    </table>
+</div>
+<script src="/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+<script src="/javascripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+<script src="/javascripts/demo/user.js" type="text/javascript"></script>
+{% endblock %}

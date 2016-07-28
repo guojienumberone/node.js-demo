@@ -12,7 +12,13 @@ router.get('/*', function(req, res, next) {
     if (m.length > 0) {
         var name = m[0];
         var module = require('../server/' + name);
-        res.render(module.template, module);
+        module.OnLoad(req, function(template, data){
+            if (template==null) {
+                res.send(data);
+            } else {
+                res.render(template, data);
+            }
+        })
     }
 });
 
