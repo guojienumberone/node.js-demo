@@ -1,11 +1,11 @@
-// 定义变量
-var title = 'index';
+// 定义页面模板
+var template = 'index';
 
-// 初始化
-{
+var data = {};
+// 页面标题
+data.title = "Weclome";
 
+// 页面加载
+exports.OnLoad = function(req, callback) {
+    callback(template, data);
 }
-
-exports.title = title;
-// 页面模板
-exports.template = 'index';

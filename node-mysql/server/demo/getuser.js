@@ -1,5 +1,4 @@
 var db = require('../db');
-var common = require('../common');
 var Q = require('q');
 
 var data = {};
@@ -34,7 +33,7 @@ var QueryUser = function(id) {
         if (err) throw err;
         // 用户信息
         if (rows.length > 0) {
-            data = common.Clone(rows[0]);
+            data = rows[0];
         }
         deferred.resolve();
     });
@@ -53,7 +52,7 @@ var QueryUserAll = function() {
         data.Users = [];
         // 用户信息
         for (var i = 0; i < rows.length; i++) {
-            data.Users[i] = common.Clone(rows[i]);
+            data.Users[i] = rows[i];
         }
         deferred.resolve();
     });
