@@ -1,0 +1,38 @@
+
+{% extends 'layout.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ title }}</h1>
+    <p><input id="file" type="file" title="请选择文件"/></p>
+    <p><input id="upload" type="button" value="上传文件" /></p>
+</div>
+<script src="/Javascripts/jquery-1.9.0.min.js"></script>
+<script>
+    $('#upload').click(function () {
+        // 构建文件信息
+        var data = new FormData();
+        data.append("file", $("#file")[0].files[0]);
+        // Ajax调用
+        $.ajax({
+            url: '/upload2',
+            type: 'POST',
+            data: data,
+            async: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (200 === data.code) {
+                    console.log("上传成功");
+                } else {
+                    console.log("上传出错");
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+
+{% extends 'layout.html' %}
+
+{% block head %}
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="/stylesheets/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="/stylesheets/font-awesome.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ title }}</h1>
+    <p>
+        <input type="file" title="请选择文件"/>
+        <div name="slider"></div>
+    </p>
+    <p><button id="upload" type="button">上传文件</button></p>
+</div>
+<script src="/Javascripts/jquery-1.9.0.min.js"></script>
+<script src="/Javascripts/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="/Javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/juploader-jquery.js"></script>
+<script src="/javascripts/demo3.js"></script>
+{% endblock %}
